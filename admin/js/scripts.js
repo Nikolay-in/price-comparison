@@ -7,6 +7,11 @@
     })
 })()
 
+// Toggle text input 
+function ToggleTextBox(id) {
+    document.getElementById(id).disabled = !document.getElementById(id).disabled;
+}
+
 $(document).ready(function () {
 
     // Toggle sidenav
