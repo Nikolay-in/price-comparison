@@ -6,6 +6,7 @@ Including crawler scraping few of the largest Bulgarian retail shops for consume
 - Responsive design with Bootstrap 5.
 - SplideJS, ChartJS, DataTables, jQuery.
 - Functionally rich adminpanel.
+- Followed many SEO good practices. 
 
 ![image](https://user-images.githubusercontent.com/3152456/178412942-321dec0a-6cc7-44a0-90f5-c8fe641a9834.png)
 
