@@ -1,6 +1,8 @@
 <?php
+// json-ld data extractor for google
 include_once('./includes/config.php');
 if (isset($_GET['id']) || isset($product['id'])) {
+    
     $jsonId = (isset($_GET['id'])) ? $_GET['id'] : $product['id'];
     $query = mysqli_query($con, "SELECT a.id, a.name, e.brandName, a.model, a.image, b.minPrice, b.maxPrice, c.subCatName, count(d.id) offers, c.url catUrl, a.url, a.description FROM products a
     LEFT JOIN (
@@ -13,6 +15,7 @@ if (isset($_GET['id']) || isset($product['id'])) {
     LEFT JOIN brand e ON e.id = a.brandID
     WHERE a.id = $jsonId;");
     $result = mysqli_fetch_array($query);
+
     if ($result) {
         $name = $result['name'];
         if ($result['description']) {
@@ -82,33 +85,7 @@ if (isset($_GET['id']) || isset($product['id'])) {
                 ]
             ]
         ];
-        //01/06/2022 - only offers, without breadcrumbs
-        // $data = (Object) [
-        //     "@context" => "https://schema.org/",
-        //     "@type" => "Product",
-        //     "name" => "$name",
-        //     "description" => $description,
-        //     "brand" => (Object) [
-        //         "@type" => "Brand",
-        //         "name" => $brand
-        //     ],
-        //     "image" => $images,
-        //     "offers" => (Object) [
-        //         "@type" => "AggregateOffer",
-        //         "highPrice" => $maxPrice,
-        //         "lowPrice" => $minPrice,
-        //         "priceCurrency" => "BGN",
-        //         "offerCount" => $offersCount,
-        //         "offers" => (Object) [
-        //             "@type" => "Offer",
-        //             "url" => "$url",
-        //             "price" => $minPrice,
-        //             "priceCurrency" => "BGN",
-        //             "itemCondition" => "https://schema.org/NewCondition",
-        //             "availability" => "https://schema.org/InStock",
-        //         ]
-        //     ]
-        // ];
+       
         echo( json_encode($data) );
     }
 }
