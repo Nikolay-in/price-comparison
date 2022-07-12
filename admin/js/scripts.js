@@ -1,21 +1,11 @@
-// Menu tooltip ?
+// Menu tooltip
 (function () {
     'use strict'
-    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+    let tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
     tooltipTriggerList.forEach(function (tooltipTriggerEl) {
         new bootstrap.Tooltip(tooltipTriggerEl)
     })
 })()
-
-// ??
-function ToggleTextBox(id) {
-    if (document.getElementById(id).disabled == true) {
-        document.getElementById(id).disabled = false;
-    } else if (document.getElementById(id).disabled == false) {
-        document.getElementById(id).disabled = true;
-    }
-}
-
 
 $(document).ready(function () {
 
